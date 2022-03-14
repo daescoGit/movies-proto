@@ -40,3 +40,26 @@ export const getMovieID = (number) => {
     (movie) => movie.number === number
   );
 }
+
+  // useEffect(() => {
+  //   caches.open(`${type}-${cat}-data`).then(cache => {
+  //     // if not in..
+  //     // + set expiry
+  //     //const cachedResponse = await cache.match(data)
+
+  //     //getData(fetchURL, (data) => { setData(data); setReadystate(true) })
+
+  //     /*       cache.match(fetchURL).then(settings => {
+  //             console.log(settings);
+  //           });
+
+  //           cache.add(fetchURL).then(() => {
+  //             console.log("Data cached ")
+  //           }); */
+  //   });
+
+
+  //   return () => {
+  //     // cleanup
+  //   }
+  // }, [fetchURL]);

@@ -5,7 +5,7 @@ import App from './App';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import CategoryList from './routes/CategoryList';
 import MyPage from './routes/MyPage';
-import MovieEntry from './routes/MovieEntry';
+import MediaEntry from './routes/MediaEntry';
 import CategoryIndex from './routes/CategoryIndex';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -28,14 +28,12 @@ ReactDOM.render(
             </>
           }
         />
-
         <Route
-          // :movieID virker som et url param til categories
-          path=":mediaType/:category" element={<CategoryIndex />}
+          // : param path
+          path="/:mediaType/:category" element={<CategoryIndex />}
         />
         <Route
-          // :movieID virker som et url param til categories
-          path=":movieId" element={<MovieEntry />}
+          path="/:mediaType/:category/:mediaId" element={<MediaEntry />}
         />
         <Route path="/mypage" element={<MyPage />} />
         <Route

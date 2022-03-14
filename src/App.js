@@ -1,12 +1,25 @@
 import { Outlet } from "react-router-dom";
 import { LinkContainer } from 'react-router-bootstrap';
 import { Container, Navbar, Nav, NavDropdown, Dropdown } from 'react-bootstrap';
+import { QueryClient, QueryClientProvider } from 'react-query';
+import { CATEGORIES } from './utilities/constants';
 
-
+// her kan vi sætte golbal configs til react query
+const queryClient = new QueryClient(
+  {
+    defaultOptions: {
+      queries: {
+        refetchOnWindowFocus: false,
+        cacheTime: 1000 * 60 * 60,
+        staleTime: 1000 * 60 * 60
+      },
+    },
+  }
+);
 
 function App() {
   return (
-    <>
+    <QueryClientProvider client={queryClient}>
       <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" sticky="top">
         <Container>
           <Navbar.Brand >Movies-demo</Navbar.Brand>
@@ -21,12 +34,24 @@ function App() {
               </LinkContainer>
               <NavDropdown title="Categories" id="collasible-nav-dropdown" menuVariant="dark">
                 <Dropdown.Header style={{ color: 'gold' }}>Movies</Dropdown.Header>
-                <NavDropdown.Item >Action</NavDropdown.Item>
-                <NavDropdown.Item >Another action</NavDropdown.Item>
-                <NavDropdown.Item >Something</NavDropdown.Item>
-                <NavDropdown.Divider />
+                {CATEGORIES.slice(0, 3).map((cat, index) =>
+                  <LinkContainer key={index} to={`/movie/${cat}`}>
+                    <NavDropdown.Item >{cat}</NavDropdown.Item>
+                  </LinkContainer>
+                )}
+                <LinkContainer to="/">
+                  <NavDropdown.Item >...</NavDropdown.Item>
+                </LinkContainer>
                 <Dropdown.Header style={{ color: 'gold' }}>Series</Dropdown.Header>
-                <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
+                <NavDropdown.Divider />
+                {CATEGORIES.slice(0, 3).map((cat, index) =>
+                  <LinkContainer key={index} to={`/series/${cat}`}>
+                    <NavDropdown.Item >{cat}</NavDropdown.Item>
+                  </LinkContainer>
+                )}
+                <LinkContainer to="/">
+                  <NavDropdown.Item >...</NavDropdown.Item>
+                </LinkContainer>
               </NavDropdown>
             </Nav>
           </Navbar.Collapse>
@@ -34,9 +59,8 @@ function App() {
       </Navbar>
 
       <Outlet />
-    </>
+    </QueryClientProvider>
   );
 }
 
-//       
 export default App;

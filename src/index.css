@@ -11,3 +11,14 @@
 .card-body-cat {
   padding: 0 !important;
 }
+
+.card-footer-cat {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.dropdown-item.active{
+  background-color:rgb(124, 124, 124) !important;
+}

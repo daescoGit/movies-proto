@@ -1,5 +1,11 @@
 import React from 'react'
 
+import { NavLink, Outlet, useSearchParams } from "react-router-dom";
+import { useSearchFilter, Search } from '../utilities/Search';
+
+// søgefunktionaliteten er sat op via react-router's "searchParams"
+// man kunne også have lavet det med state hooks, men searchParams giver os praktisk url integration ud af boksen
+
 const CategoryIndex = () => {
 
 
