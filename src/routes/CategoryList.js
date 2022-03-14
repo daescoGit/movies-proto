@@ -1,75 +1,42 @@
-import React from 'react'
-import { NavLink, Outlet, useSearchParams } from "react-router-dom";
-import { getMovies } from "../data";
-import { useSearchFilter, Search } from '../utilities/Search';
+import React from 'react';
+
+// import { NavLink, Outlet, useSearchParams } from "react-router-dom";
+// import { useSearchFilter, Search } from '../utilities/Search';
+
+import { Container, Row } from 'react-bootstrap';
+
+import CategoryCard from '../components/CategoryCard';
 
 // fetch data
 // bør laves som shared proxy/cdn cache (hvis samme delte data) og evt. også client-sided.
 // eftersom http request caching mulighederne på given tidspunk er ukendte for mig laver jeg blot lidt simpel client-side caching. 
 // wishlist bør være privat browser cached
 
-const requestOptions = {
-  method: 'GET',
-  redirect: 'follow'
-};
-
-const getCategoryData = () => {
-  console.log('fetching new')
-  fetch("https://feed.entertainment.tv.theplatform.eu/f/jGxigC/bb-all-pas?form=json&lang=da&byProgramType=movie&range=1-4", requestOptions)
-    .then(response => response.text())
-    .then(result => (JSON.parse(result)))
-    .catch(error => ('error', error))
-}
-
-// todo: memorization
-// const memorized = (fetchCallback) => {
-//   if (Cache.hasKey('categoryData')) {
-//     return Cache.get('categoryData');
-//   }
-
-//   Cache.set('categoryData', fetchCallback);
-//   return fetchCallback;
-// }
-
-
 // søgefunktionaliteten er sat op via react-router's "searchParams"
 // man kunne også have lavet det med state hooks, men searchParams giver os praktisk url integration ud af boksen
 
-const CategoryList = () => {
-  const movies = getMovies(); // fjern
-  getCategoryData();
+
+// I kravspecifikationen er det beskrevet at både forside og generesider indeholder tal på totale film/serier
+// eftersom api query eksemplerne ikke har funktionalitet til dette specifikt -
+// er vi nød til at hente alle film/serier for at få count
+// herefter har vi dog på denne måde adgang til alt data og behøver ikke at lave flere individuelle fetch
+
+const CategoryList = ({ type }) => {
+  const categories = ['Action', 'Comedy', 'Thriller', 'War', 'Romance', 'Drama', 'Crime', 'Documentary', 'Horror'];
+
+  const baseURL = 'https://feed.entertainment.tv.theplatform.eu/f/jGxigC/bb-all-pas?form=json&lang=da'
+  const title = type == 'Movie' ? 'Movies' : type;
 
   return (
-    <>
-      <div>CategoryList</div>
+    <Container>
+      <h2>{title}</h2>
 
-      <div style={{ display: "flex" }}>
-        <nav
-          style={{
-            borderRight: "solid 1px",
-            padding: "1rem",
-          }}
-        >
-          <Search urlParam="movie" />
-          {useSearchFilter(movies, "movie").map((movie) => (
-            <NavLink
-              style={({ isActive }) => {
-                return {
-                  display: "block",
-                  margin: "1rem 0",
-                  color: isActive ? "red" : "",
-                };
-              }}
-              to={`/categories/${movie.number}`}
-              key={movie.number}
-            >
-              {movie.name}
-            </NavLink>
-          ))}
-        </nav>
-        <Outlet />
-      </div>
-    </>
+      <Row xs={1} md={2} lg={3} className="g-4">
+        {categories.map((cat, index) => (
+          <CategoryCard key={index} cat={cat} type={type} fetchURL={`${baseURL}&byProgramType=${type}&byTags=genre:${cat}`} />
+        ))}
+      </Row>
+    </Container>
   );
 }
 

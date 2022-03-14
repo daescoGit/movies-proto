@@ -1,4 +1,5 @@
 import React from 'react'
+import { Container, Card, Row, Col } from 'react-bootstrap';
 
 // permanent data fra en db ville være ideelt her
 // men eftersom vi er begrænset vil jeg gemme brugerens wishlist i local storage
@@ -6,7 +7,10 @@ import React from 'react'
 
 const MyPage = () => {
   return (
-    <div>My page</div>
+    <Container>
+
+      <div>My page</div>
+    </Container>
   )
 }
 
