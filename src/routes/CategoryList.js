@@ -11,13 +11,13 @@ import { CATEGORIES } from '../utilities/constants';
 // herefter har vi dog på denne måde adgang til alt data og behøver ikke at lave flere individuelle fetch
 
 const CategoryList = ({ type }) => {
-  const baseURL = 'https://feed.entertainment.tv.theplatform.eu/f/jGxigC/bb-all-pas?form=json&lang=da&fields=title,plprogram$thumbnails,tdc$urlSlug'
+  const baseURL = 'https://feed.entertainment.tv.theplatform.eu/f/jGxigC/bb-all-pas?form=json&lang=da&fields=title,plprogram$thumbnails,tdc$urlSlug,description';
   const title = type == 'Movie' ? 'Movies' : type;
 
   return (
     <Container className="mb-5">
       <div className="p-4 text-center">
-        <h1 className="mb-3">{title}</h1>
+        <h1>{title}</h1>
       </div>
 
       <Row xs={1} md={2} lg={3} className="g-4">

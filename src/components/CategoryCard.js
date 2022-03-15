@@ -28,10 +28,7 @@ const CategoryCard = ({ cat, fetchURL, type }) => {
   if (error) console.log('An error has occurred: ' + error.message)
 
   let defaultRandomSlide = 0
-  if (data) {
-    console.log(data)
-    defaultRandomSlide = RandomNr(0, data.entryCount <= 4 ? data.entryCount - 1 : 3);
-  }
+  if (data) defaultRandomSlide = RandomNr(0, data.entryCount <= 4 ? data.entryCount - 1 : 3)
 
 
   const handleSlideSelect = (selectedIndex, e) => {
@@ -45,20 +42,22 @@ const CategoryCard = ({ cat, fetchURL, type }) => {
     !isLoading && data && data.entryCount !== 0 &&
     <Col>
       <Card>
-        <Card.Header as="h5" className="card-header-cat" >{cat}</Card.Header>
+        <LinkContainer style={{ cursor: 'pointer' }} to={`/${type}/${cat}`}>
+          <Card.Header as="h5" className="card-header-cat" >{cat}</Card.Header>
+        </LinkContainer>
         <Card.Body className="card-body-cat">
 
           <Carousel activeIndex={slideIndex !== -1 ? slideIndex : defaultRandomSlide} onSelect={handleSlideSelect} interval={null}>
             {data.entries
-              .filter((mediaEntry) => mediaEntry.plprogram$thumbnails.hasOwnProperty('orig-720x1280'))
+              .filter((mediaEntry) => mediaEntry.plprogram$thumbnails.hasOwnProperty('orig-470x836'))
               .slice(0, 4)
               .map((mediaEntry, index) => {
                 return (
                   <Carousel.Item key={index} style={{ maxHeight: '13rem' }}>
-                    <LinkContainer style={{ cursor: 'pointer' }} to={`/${type}/${mediaEntry.tdc$urlSlug}`}>
+                    <LinkContainer style={{ cursor: 'pointer' }} to={`/${type}/${cat}/${mediaEntry.tdc$urlSlug}`}>
                       <img
                         className="d-block w-100"
-                        src={mediaEntry.plprogram$thumbnails['orig-636x1242'].plprogram$url}
+                        src={mediaEntry.plprogram$thumbnails['orig-470x836'].plprogram$url}
                         alt={mediaEntry.title}
                       />
                     </LinkContainer>
@@ -75,9 +74,9 @@ const CategoryCard = ({ cat, fetchURL, type }) => {
         <LinkContainer style={{ cursor: 'pointer' }} to={`/${type}/${cat}`}>
           <Card.Footer className="card-footer-cat">
             <div>
-              {data.entryCount} {type == 'Movie' && data.entryCount == 1 ? 'movie'
-                : type == 'Movie' && data.entryCount > 1 ? 'movies'
-                  : type == 'Series' && data.entryCount == 1 ? 'show'
+              {data.entryCount} {type === 'Movie' && data.entryCount === 1 ? 'movie'
+                : type === 'Movie' && data.entryCount > 1 ? 'movies'
+                  : type === 'Series' && data.entryCount === 1 ? 'show'
                     : 'shows'} available
             </div>
             <div style={{ color: 'gold', fontSize: '1.3rem' }}>❯</div>
