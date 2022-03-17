@@ -3,16 +3,14 @@ import { Container, Row } from 'react-bootstrap';
 import CategoryCard from '../components/CategoryCard';
 import { CATEGORIES } from '../utilities/constants';
 
-
-
-// I kravspecifikationen er det beskrevet at både forside og generesider indeholder tal på totale film/serier
+// i kravspecifikationen er det beskrevet at både forside og generesider indeholder tal på totale film/serier
 // eftersom api query eksemplerne ikke har funktionalitet til dette specifikt -
 // er vi nød til at hente alle film/serier for at få count
-// herefter har vi dog på denne måde adgang til alt data og behøver ikke at lave flere individuelle fetch
+// herefter har vi dog på denne måde adgang til data'en og behøver ikke at fetche det på ny til fx. underkategori siderne
 
 const CategoryList = ({ type }) => {
-  const baseURL = 'https://feed.entertainment.tv.theplatform.eu/f/jGxigC/bb-all-pas?form=json&lang=da&fields=title,plprogram$thumbnails,tdc$urlSlug,description';
-  const title = type == 'Movie' ? 'Movies' : type;
+  const baseURL = 'https://feed.entertainment.tv.theplatform.eu/f/jGxigC/bb-all-pas?form=json&lang=da&fields=title,plprogram$thumbnails,id,description';
+  const title = type === 'Movie' ? 'Movies' : type;
 
   return (
     <Container className="mb-5">

@@ -12,8 +12,8 @@ const CategoryIndex = () => {
   // man kunne også have lavet det med state hooks, men searchParams giver os praktisk url integration ud af boksen
 
   const params = useParams();
-  const [searchParams, setSearchParams] = useSearchParams();
-  const fetchURL = `https://feed.entertainment.tv.theplatform.eu/f/jGxigC/bb-all-pas?form=json&lang=da&byTags=genre:${params.category}&byProgramType=${params.mediaType}&fields=title,plprogram$thumbnails,tdc$urlSlug,description`;
+  const [searchParams] = useSearchParams();
+  const fetchURL = `https://feed.entertainment.tv.theplatform.eu/f/jGxigC/bb-all-pas?form=json&lang=da&byTags=genre:${params.category}&byProgramType=${params.mediaType}&fields=title,plprogram$thumbnails,id,description`;
 
   // hvis vi har været på forsiden vil vi allerede have kategorien cached
   const { isLoading, error, data } = useQuery(['category', params.category, params.mediaType], () =>
@@ -22,7 +22,7 @@ const CategoryIndex = () => {
     )
   )
 
-  //if (isLoading) return 'Loading... something cool should probably be here in the meanwhile'
+  //if (isLoading) return 'Loading... 
   if (error) console.log('An error has occurred: ' + error.message)
   //if (data) console.log(data)
 

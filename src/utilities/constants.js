@@ -14,3 +14,23 @@ export const CATEGORIES = [
   'Documentary',
   'Horror'
 ];
+
+export const IMGSIZEPRIORITYMEDIACARD = [
+  'orig-470x836',
+  'orig-669x1188',
+  'orig-636x1242',
+  'orig-720x1280',
+  'da-470x836',
+  'da-669x1188',
+  'da-636x1242',
+  'da-720x1280'
+];
+
+export const IMGFORMATCOVER = [
+  'Featured',
+  'bd-w-extrahigh'
+];
+
+export const IMGFORMATBACKDROP = [
+  'Backdrop'
+];

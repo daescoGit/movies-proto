@@ -5,13 +5,15 @@ import { QueryClient, QueryClientProvider } from 'react-query';
 import { CATEGORIES } from './utilities/constants';
 
 // her kan vi sætte golbal configs til react query
+// cacheTime er hvor lang tid før cachen bliver garbage collected
+// staleTime er hvor ofte der skal fetches ny data i baggrunden
 const queryClient = new QueryClient(
   {
     defaultOptions: {
       queries: {
         refetchOnWindowFocus: false,
-        cacheTime: 1000 * 60 * 60,
-        staleTime: 1000 * 60 * 60
+        cacheTime: 1000 * 60 * 10,
+        staleTime: 1000 * 60 * 30
       },
     },
   }
@@ -29,7 +31,7 @@ function App() {
               <LinkContainer to="/">
                 <Nav.Link>Home</Nav.Link>
               </LinkContainer>
-              <LinkContainer to="/mypage">
+              <LinkContainer to="/wishlist">
                 <Nav.Link>Wish list</Nav.Link>
               </LinkContainer>
               <NavDropdown title="Categories" id="collasible-nav-dropdown" menuVariant="dark">
@@ -44,7 +46,7 @@ function App() {
                 </LinkContainer>
                 <Dropdown.Header style={{ color: 'gold' }}>Series</Dropdown.Header>
                 <NavDropdown.Divider />
-                {CATEGORIES.slice(0, 3).map((cat, index) =>
+                {CATEGORIES.slice(0, 2).map((cat, index) =>
                   <LinkContainer key={index} to={`/series/${cat}`}>
                     <NavDropdown.Item >{cat}</NavDropdown.Item>
                   </LinkContainer>

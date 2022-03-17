@@ -1,51 +1,64 @@
 import React from 'react'
 import { Card, Col } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
+import { addToStorage, getFromStorage, removeFromStorage } from '../utilities/miscFunc';
+import { useState } from 'react';
+import { IMGSIZEPRIORITYMEDIACARD } from '../utilities/constants';
 
 const MediaCard = ({ mediaEntry, type, cat }) => {
-  let image;
-  const imgSizePriority = [
-    'orig-470x836',
-    'orig-669x1188',
-    'orig-636x1242',
-    'orig-720x1280',
-    'da-470x836',
-    'da-669x1188',
-    'da-636x1242',
-    'da-720x1280'
-  ];
+  const onlyID = mediaEntry.id.split('ProgramAvailability/')[1];
+  const [inWishList, setInWishList] = useState(getFromStorage(onlyID) || null);
 
   // find billede ud fra prioritet
-  for (let size of imgSizePriority) {
+  let image;
+  for (const size of IMGSIZEPRIORITYMEDIACARD) {
     if (Object.keys(mediaEntry.plprogram$thumbnails).includes(size)) {
       image = mediaEntry.plprogram$thumbnails[size].plprogram$url
       break;
     }
   }
 
+  const handleWish = () => {
+    if (inWishList === null) {
+      addToStorage(onlyID, `${type}:${cat}:`)
+      setInWishList(onlyID)
+    } else {
+      removeFromStorage(onlyID)
+      setInWishList(null)
+    }
+  }
+
   return (
     <Col>
-      <LinkContainer style={{ cursor: 'pointer' }} to={`/${type}/${cat}/${mediaEntry.tdc$urlSlug}`}>
-        <Card>
-          <Card.Header as="h5" className="card-header-cat" >{mediaEntry.title}</Card.Header>
-          <Card.Body className="card-body-cat">
-            <LinkContainer style={{ cursor: 'pointer' }} to={`/${mediaEntry.type}/${cat}/${mediaEntry.tdc$urlSlug}`}>
-              <img
-                className="d-block w-100"
-                src={image ? image : require('./placeholder.png')}
-                alt={'mediaEntry.title'}
-              />
-            </LinkContainer>
-          </Card.Body>
+      <Card>
+        <Card.Header as="h5" className="card-header-cat" >
+          {mediaEntry.title}
+        </Card.Header>
+        <Card.Body className="card-body-cat">
+          <LinkContainer
+            style={{ cursor: 'pointer' }}
+            to={`/${type}/${cat}/${onlyID}`}
+          >
+            <img
+              className="d-block w-100"
+              src={image ? image : require('../utilities/placeholder.png')}
+              alt={'mediaEntry.title'}
+            />
+          </LinkContainer>
+          <div className="media-card-wish"
+            style={{ background: inWishList === null ? '#e2cf69' : '#ab3715' }}
+            onClick={handleWish}
+          >
+            {inWishList === null ? '+' : '−'}
+          </div>
+        </Card.Body>
 
-          <Card.Body>
-            <small className="media-card-text text-muted">
-              {mediaEntry.description}
-            </small>
-          </Card.Body>
-
-        </Card>
-      </LinkContainer>
+        <Card.Body>
+          <small className="media-card-text text-muted">
+            {mediaEntry.description}
+          </small>
+        </Card.Body>
+      </Card>
     </Col>
   )
 }

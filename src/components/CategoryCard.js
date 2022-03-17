@@ -24,7 +24,7 @@ const CategoryCard = ({ cat, fetchURL, type }) => {
     )
   )
 
-  //if (isLoading) return 'Loading... something cool should probably be here in the meanwhile'
+  //if (isLoading) return 'Loading... 
   if (error) console.log('An error has occurred: ' + error.message)
 
   let defaultRandomSlide = 0
@@ -49,12 +49,12 @@ const CategoryCard = ({ cat, fetchURL, type }) => {
 
           <Carousel activeIndex={slideIndex !== -1 ? slideIndex : defaultRandomSlide} onSelect={handleSlideSelect} interval={null}>
             {data.entries
-              .filter((mediaEntry) => mediaEntry.plprogram$thumbnails.hasOwnProperty('orig-470x836'))
+              .filter(mediaEntry => mediaEntry.plprogram$thumbnails.hasOwnProperty('orig-470x836'))
               .slice(0, 4)
               .map((mediaEntry, index) => {
                 return (
                   <Carousel.Item key={index} style={{ maxHeight: '13rem' }}>
-                    <LinkContainer style={{ cursor: 'pointer' }} to={`/${type}/${cat}/${mediaEntry.tdc$urlSlug}`}>
+                    <LinkContainer style={{ cursor: 'pointer' }} to={`/${type}/${cat}/${mediaEntry.id.split('ProgramAvailability/')[1]}`}>
                       <img
                         className="d-block w-100"
                         src={mediaEntry.plprogram$thumbnails['orig-470x836'].plprogram$url}

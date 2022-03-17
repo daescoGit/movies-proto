@@ -4,7 +4,7 @@ import './index.css';
 import App from './App';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import CategoryList from './routes/CategoryList';
-import MyPage from './routes/MyPage';
+import WishList from './routes/WishList';
 import MediaEntry from './routes/MediaEntry';
 import CategoryIndex from './routes/CategoryIndex';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -35,7 +35,7 @@ ReactDOM.render(
         <Route
           path="/:mediaType/:category/:mediaId" element={<MediaEntry />}
         />
-        <Route path="/mypage" element={<MyPage />} />
+        <Route path="/wishlist" element={<WishList />} />
         <Route
           // "*" vil matche når ingen andre routes gør
           path="*"
