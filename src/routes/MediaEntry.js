@@ -6,6 +6,7 @@ import { REQUESTOPTIONS } from '../utilities/constants';
 import MediaEntryHeader from '../components/MediaEntryHeader';
 import { IMGFORMATBACKDROP } from '../utilities/constants';
 import { filterByFormat } from '../utilities/miscFunc';
+import MediaEntryBody from '../components/MediaEntryBody';
 
 const MediaEntry = () => {
   const params = useParams();
@@ -30,20 +31,16 @@ const MediaEntry = () => {
     if (backdropRes.length) backdrop = backdropRes[0].plprogram$url
   }
 
-  console.log(backdrop)
-  // xs={1} md={2} lg={3}
   return (
-    <div className="container-fluid entry-container-bg" style={{ backgroundImage: `radial-gradient(circle, rgba(0,0,0,0.3) 0%, rgba(0,0,0,1) 100%), url(${backdrop})` }}>
+    <div className="container-fluid entry-container-bg" style={{ backgroundImage: `radial-gradient(circle, rgba(0,0,0,0.5) 0%, rgba(0,0,0,1) 100%), url(${backdrop})` }}>
       <Container className="mb-5 entry-container">
         {!isLoading && data &&
           <>
             <div className="p-4 text-center">
-              <h1>{data.title}</h1>
+              <h1 className="display-3">{data.title}</h1>
             </div>
-
-            <Row className="g-4">
-              <MediaEntryHeader mediaEntry={data} />
-            </Row>
+            <MediaEntryHeader mediaEntry={data} />
+            <MediaEntryBody mediaEntry={data} />
           </>
         }
       </Container>

@@ -40,8 +40,8 @@ const CategoryCard = ({ cat, fetchURL, type }) => {
   // filter på specifik billed størrelse for konsistens og sikker billed source
   return (
     !isLoading && data && data.entryCount !== 0 &&
-    <Col>
-      <Card>
+    <Col className="category-card">
+      <Card text={'dark'} bg={'Info'} border="secondary">
         <LinkContainer style={{ cursor: 'pointer' }} to={`/${type}/${cat}`}>
           <Card.Header as="h5" className="card-header-cat" >{cat}</Card.Header>
         </LinkContainer>

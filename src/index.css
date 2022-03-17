@@ -8,6 +8,14 @@ body {
   text-align: center !important;
 }
 
+.card {
+  animation: fadeIn 3s;
+  -webkit-animation: fadeIn 3s;
+  -moz-animation: fadeIn 3s;
+  -o-animation: fadeIn 3s;
+  -ms-animation: fadeIn 3s;
+}
+
 .card-body-cat {
   padding: 0 !important;
 }
@@ -50,13 +58,34 @@ body {
   opacity: 1;
 }
 
+.entry-text {
+  color: gainsboro;
+}
+
 @media (min-width: 1400px) {
   .entry-container {
     width: 70rem !important;
   }
 }
 
-/* background-image: radial-gradient(circle, rgba(0,0,0,0.3) 0%, rgba(0,0,0,1) 100%), url(https://prod.cdn.bbaws.net/TDC_Blockbuster_-_Production/960/628/Fast_Furious_9_Backdrop.jpg) !important; */
+@media (min-width: 992px) {
+  .entry-image {
+    max-height: 30rem;
+    object-fit: cover;
+  }
+}
+
+@media (max-width: 767px) {
+  .entry-text {
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 1199px) {
+  .entry-text {
+    font-size: 0.9rem;
+  }
+}
 
 .entry-container-bg {
   background-size: cover;
@@ -64,6 +93,7 @@ body {
   background-repeat: no-repeat;
   position: fixed;
   background-position: center;
+  overflow-y: scroll;
 
   animation: fadeIn 3s;
   -webkit-animation: fadeIn 3s;
@@ -96,3 +126,30 @@ body {
   0% {opacity:0;}
   100% {opacity:1;}
 }
+
+.entry-image {
+  border: 5px solid #8e7b15;
+  padding: 0 !important;
+}
+
+.gray-backdrop {
+  background-color: #212529;
+}
+
+.goldtext-dark {
+  color:#8e7b15
+}
+
+/* .category-headline-Series {
+  color: rgba(0,0,0,0);
+  animation: fadeInHeadline 1s;
+  -webkit-animation: fadeInHeadline 1s;
+  -moz-animation: fadeInHeadline 1s;
+  -o-animation: fadeInHeadline 1s;
+  -ms-animation: fadeInHeadline 1s;
+}
+
+@keyframes fadeInHeadline {
+  0% {color: rgba(0,0,0,0);}
+  100% {color: rgba(255, 255, 255, 1);}
+} */

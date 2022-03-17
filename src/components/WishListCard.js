@@ -28,7 +28,7 @@ const WishListCard = ({ fetchURL, type, cat, id, removeWish }) => {
   return (
     !isLoading && data &&
     <Col>
-      <Card>
+      <Card text={'dark'} bg={'Info'} border="secondary">
         <Card.Header as="h5" className="card-header-cat" >
           {data.title}
         </Card.Header>

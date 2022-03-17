@@ -11,6 +11,8 @@ const CategoryIndex = () => {
   // søgefunktionaliteten er sat op via react-router's "searchParams" (se utilities/search.js)
   // man kunne også have lavet det med state hooks, men searchParams giver os praktisk url integration ud af boksen
 
+  window.scrollTo(0, 0);
+
   const params = useParams();
   const [searchParams] = useSearchParams();
   const fetchURL = `https://feed.entertainment.tv.theplatform.eu/f/jGxigC/bb-all-pas?form=json&lang=da&byTags=genre:${params.category}&byProgramType=${params.mediaType}&fields=title,plprogram$thumbnails,id,description`;

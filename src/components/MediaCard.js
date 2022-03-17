@@ -30,7 +30,7 @@ const MediaCard = ({ mediaEntry, type, cat }) => {
 
   return (
     <Col>
-      <Card>
+      <Card text={'dark'} bg={'Info'} border="secondary">
         <Card.Header as="h5" className="card-header-cat" >
           {mediaEntry.title}
         </Card.Header>

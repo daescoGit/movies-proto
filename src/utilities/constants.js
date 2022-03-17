@@ -28,9 +28,15 @@ export const IMGSIZEPRIORITYMEDIACARD = [
 
 export const IMGFORMATCOVER = [
   'Featured',
-  'bd-w-extrahigh'
+  'bd-w-superhigh',
+  'bd-w-extrahigh',
+  'bd-w-ultrahigh',
 ];
 
 export const IMGFORMATBACKDROP = [
-  'Backdrop'
+  'Backdrop',
+  'Poster',
+  'bd-w-ultrahigh',
+  'bd-w-extrahigh',
+  'bd-w-superhigh'
 ];
