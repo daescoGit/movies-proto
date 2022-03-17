@@ -20,6 +20,7 @@ const CategoryList = ({ type }) => {
     }, 1000)
 
     return () => {
+      // clean up
       clearTimeout();
     }
   }, [])

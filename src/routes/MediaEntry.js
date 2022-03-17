@@ -1,6 +1,6 @@
 import React from 'react'
 import { useParams } from "react-router-dom";
-import { Row, Container } from 'react-bootstrap';
+import { Container } from 'react-bootstrap';
 import { useQuery } from 'react-query';
 import { REQUESTOPTIONS } from '../utilities/constants';
 import MediaEntryHeader from '../components/MediaEntryHeader';
@@ -24,9 +24,7 @@ const MediaEntry = () => {
 
   let backdrop;
   if (data) {
-    console.log(data)
-    console.log(filterByFormat(IMGFORMATBACKDROP, data))
-
+    // filterByFormat kigger på billeders "tags"
     const backdropRes = filterByFormat(IMGFORMATBACKDROP, data)
     if (backdropRes.length) backdrop = backdropRes[0].plprogram$url
   }

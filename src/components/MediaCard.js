@@ -18,6 +18,8 @@ const MediaCard = ({ mediaEntry, type, cat }) => {
     }
   }
 
+  // localstorage key/values
+  // samt state til reaktiv visning
   const handleWish = () => {
     if (inWishList === null) {
       addToStorage(onlyID, `${type}:${cat}:`)

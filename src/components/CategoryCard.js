@@ -8,14 +8,10 @@ import { RandomNr } from '../utilities/miscFunc';
 
 // caching
 // bør laves som shared proxy/cdn cache (hvis samme delte data) og yderligere også client-sided.
-// eftersom server-side caching mulighederne på given tidspunk er ukendte for mig -
+// eftersom server-side caching mulighederne på given tidspunk er ukendte for mig
 // laver jeg blot lidt client-side caching vha. react-query pakken
 
 const CategoryCard = ({ cat, fetchURL, type }) => {
-  // const [isLoading, setIsloading] = useState(true);
-  // const [data, setData] = useState({})
-  // getData(fetchURL, (data) => { setData(data); setIsloading(false) })
-
   const [slideIndex, setSlideIndex] = useState(-1)
 
   const { isLoading, error, data } = useQuery(['category', cat, type], () =>
