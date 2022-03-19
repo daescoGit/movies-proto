@@ -89,7 +89,7 @@ body {
 
 .entry-container-bg {
   background-size: cover;
-  height: 95vh;
+  min-height: 95vh;
   background-repeat: no-repeat;
   position: fixed;
   background-position: center;

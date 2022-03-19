@@ -11,8 +11,8 @@ const MediaEntryBody = ({ mediaEntry }) => {
   } = mediaEntry;
 
   return (
-    <Row className="mt-3" xs={1} md={2}>
-      <Col className="mb-3">
+    <Row className="mt-2" xs={1} md={2}>
+      <Col className="mb-3 p-2">
         <div className="p-4 m-0 gray-backdrop">
           <p className="entry-text">
             {plprogram$descriptionLocalized.da && plprogram$descriptionLocalized.da.length
@@ -22,7 +22,7 @@ const MediaEntryBody = ({ mediaEntry }) => {
           </p>
         </div>
       </Col>
-      <Col className="mb-3">
+      <Col className="mb-3 p-2">
         <div className="p-4 m-0 gray-backdrop">
           <div style={{ display: 'flex', gap: '0.5rem' }}>
             <p className="goldtext-dark">Year:</p>
@@ -44,7 +44,7 @@ const MediaEntryBody = ({ mediaEntry }) => {
           </div>
 
           <div style={{ display: 'flex', gap: '0.5rem' }}>
-            <p className="goldtext-dark">Director(s):</p>
+            <p className="goldtext-dark">Directors:</p>
             {plprogram$credits
               .filter((role) => role.plprogram$creditType === 'director')
               .map((actor, index, filteredArray) => {

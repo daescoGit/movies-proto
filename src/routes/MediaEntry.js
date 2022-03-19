@@ -34,8 +34,8 @@ const MediaEntry = () => {
       <Container className="mb-5 entry-container">
         {!isLoading && data &&
           <>
-            <div className="p-4 text-center">
-              <h1 className="display-3">{data.title}</h1>
+            <div className="p-3 text-center">
+              <h1 className="display-4">{data.title}</h1>
             </div>
             <MediaEntryHeader mediaEntry={data} />
             <MediaEntryBody mediaEntry={data} />
