@@ -13,11 +13,10 @@ const CategoryList = ({ type }) => {
   const baseURL = 'https://feed.entertainment.tv.theplatform.eu/f/jGxigC/bb-all-pas?form=json&lang=da&fields=title,plprogram$thumbnails,id,description';
   const title = type === 'Movie' ? 'Movies' : type;
 
-
   useEffect(() => {
     setTimeout(() => {
       setDelayedTitle(type)
-    }, 1000)
+    }, 1500)
 
     return () => {
       // clean up
@@ -36,7 +35,7 @@ const CategoryList = ({ type }) => {
 
       <Row xs={1} md={2} lg={3} className="g-4">
         {CATEGORIES.map((cat, index) => (
-          <CategoryCard key={index} cat={cat} type={type} fetchURL={`${baseURL}&byProgramType=${type}&byTags=genre:${cat}`} />
+          <CategoryCard key={index} cat={cat} type={type} fetchURL={`${baseURL}&byProgramType=${type}&byTags=genre:${cat.title}`} />
         ))}
       </Row>
     </Container>

@@ -35,7 +35,7 @@ const WishListCard = ({ fetchURL, type, cat, id, removeWish }) => {
         <Card.Body className="card-body-cat">
           <LinkContainer
             style={{ cursor: 'pointer' }}
-            to={`/${type}/${cat}/${id}`}
+            to={`/${type}/${cat.title}/${id}`}
           >
             <img
               className="d-block w-100"

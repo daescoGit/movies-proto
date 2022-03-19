@@ -29,20 +29,23 @@ const WishList = () => {
       <div className="p-4 text-center">
         <h1>WishList</h1>
       </div>
-      <Row xs={1} md={2} lg={3} className="g-4">
-        {storage.map((id, index) => {
-          const type_cat_id = id.split(':')
-          const fetchURL = `https://feed.entertainment.tv.theplatform.eu/f/jGxigC/bb-all-pas/${type_cat_id[2]}?form=json`;
-          return <WishListCard
-            fetchURL={fetchURL}
-            key={index}
-            type={type_cat_id[0]}
-            cat={type_cat_id[1]}
-            id={type_cat_id[2]}
-            removeWish={() => handleWish(type_cat_id[2])}
-          />
-        })}
-      </Row>
+      {storage.length ?
+        <Row xs={1} md={2} lg={3} className="g-4">
+          {storage.map((id, index) => {
+            const type_cat_id = id.split(':')
+            const fetchURL = `https://feed.entertainment.tv.theplatform.eu/f/jGxigC/bb-all-pas/${type_cat_id[2]}?form=json`;
+            return <WishListCard
+              fetchURL={fetchURL}
+              key={index}
+              type={type_cat_id[0]}
+              cat={type_cat_id[1]}
+              id={type_cat_id[2]}
+              removeWish={() => handleWish(type_cat_id[2])}
+            />
+          })}
+        </Row>
+        : <h3 style={{ textAlign: 'center' }}>No wishes added yet</h3>
+      }
     </Container>
   )
 }

@@ -38,11 +38,10 @@ const CategoryCard = ({ cat, fetchURL, type }) => {
     !isLoading && data && data.entryCount !== 0 &&
     <Col className="category-card">
       <Card text={'dark'} bg={'Info'} border="secondary">
-        <LinkContainer style={{ cursor: 'pointer' }} to={`/${type}/${cat}`}>
-          <Card.Header as="h5" className="card-header-cat" >{cat}</Card.Header>
+        <LinkContainer style={{ cursor: 'pointer' }} to={`/${type}/${cat.title}`}>
+          <Card.Header as="h5" className={`card-header-cat ${cat.color}`}>{cat.title}</Card.Header>
         </LinkContainer>
         <Card.Body className="card-body-cat">
-
           <Carousel activeIndex={slideIndex !== -1 ? slideIndex : defaultRandomSlide} onSelect={handleSlideSelect} interval={null}>
             {data.entries
               .filter(mediaEntry => mediaEntry.plprogram$thumbnails.hasOwnProperty('orig-470x836'))
@@ -50,7 +49,7 @@ const CategoryCard = ({ cat, fetchURL, type }) => {
               .map((mediaEntry, index) => {
                 return (
                   <Carousel.Item key={index} style={{ maxHeight: '13rem' }}>
-                    <LinkContainer style={{ cursor: 'pointer' }} to={`/${type}/${cat}/${mediaEntry.id.split('ProgramAvailability/')[1]}`}>
+                    <LinkContainer style={{ cursor: 'pointer' }} to={`/${type}/${cat.title}/${mediaEntry.id.split('ProgramAvailability/')[1]}`}>
                       <img
                         className="d-block w-100"
                         src={mediaEntry.plprogram$thumbnails['orig-470x836'].plprogram$url}
@@ -67,7 +66,7 @@ const CategoryCard = ({ cat, fetchURL, type }) => {
           </Carousel>
 
         </Card.Body>
-        <LinkContainer style={{ cursor: 'pointer' }} to={`/${type}/${cat}`}>
+        <LinkContainer style={{ cursor: 'pointer' }} to={`/${type}/${cat.title}`}>
           <Card.Footer className="card-footer-cat">
             <div>
               {data.entryCount} {type === 'Movie' && data.entryCount === 1 ? 'movie'

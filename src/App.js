@@ -22,7 +22,7 @@ const queryClient = new QueryClient(
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
-      <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" sticky="top">
+      <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" sticky="top" >
         <Container>
           <Navbar.Brand >Movies-demo</Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
@@ -37,8 +37,8 @@ function App() {
               <NavDropdown title="Categories" id="collasible-nav-dropdown" menuVariant="dark">
                 <Dropdown.Header style={{ color: 'gold' }}>Movies</Dropdown.Header>
                 {CATEGORIES.slice(0, 3).map((cat, index) =>
-                  <LinkContainer key={index} to={`/movie/${cat}`}>
-                    <NavDropdown.Item >{cat}</NavDropdown.Item>
+                  <LinkContainer key={index} to={`/movie/${cat.title}`}>
+                    <NavDropdown.Item >{cat.title}</NavDropdown.Item>
                   </LinkContainer>
                 )}
                 <LinkContainer to="/">
@@ -47,8 +47,8 @@ function App() {
                 <Dropdown.Header style={{ color: 'gold' }}>Series</Dropdown.Header>
                 <NavDropdown.Divider />
                 {CATEGORIES.slice(0, 2).map((cat, index) =>
-                  <LinkContainer key={index} to={`/series/${cat}`}>
-                    <NavDropdown.Item >{cat}</NavDropdown.Item>
+                  <LinkContainer key={index} to={`/series/${cat.title}`}>
+                    <NavDropdown.Item >{cat.title}</NavDropdown.Item>
                   </LinkContainer>
                 )}
                 <LinkContainer to="/">

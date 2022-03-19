@@ -22,7 +22,7 @@ const MediaCard = ({ mediaEntry, type, cat }) => {
   // samt state til reaktiv visning
   const handleWish = () => {
     if (inWishList === null) {
-      addToStorage(onlyID, `${type}:${cat}:`)
+      addToStorage(onlyID, `${type}:${cat.title}:`)
       setInWishList(onlyID)
     } else {
       removeFromStorage(onlyID)
@@ -33,13 +33,13 @@ const MediaCard = ({ mediaEntry, type, cat }) => {
   return (
     <Col>
       <Card text={'dark'} bg={'Info'} border="secondary">
-        <Card.Header as="h5" className="card-header-cat" >
+        <Card.Header as="h5" className={`card-header-cat`} style={{ color: '#383838' }}>
           {mediaEntry.title}
         </Card.Header>
         <Card.Body className="card-body-cat">
           <LinkContainer
             style={{ cursor: 'pointer' }}
-            to={`/${type}/${cat}/${onlyID}`}
+            to={`/${type}/${cat.title}/${onlyID}`}
           >
             <img
               className="d-block w-100"

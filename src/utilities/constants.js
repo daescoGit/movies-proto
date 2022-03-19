@@ -4,15 +4,15 @@ export const REQUESTOPTIONS = {
 };
 
 export const CATEGORIES = [
-  'Action',
-  'Comedy',
-  'Thriller',
-  'War',
-  'Romance',
-  'Drama',
-  'Crime',
-  'Documentary',
-  'Horror'
+  { 'title': 'Action', 'color': 'cat-action' },
+  { 'title': 'Comedy', 'color': 'cat-comedy' },
+  { 'title': 'Thriller', 'color': 'cat-thriller' },
+  { 'title': 'War', 'color': 'cat-war' },
+  { 'title': 'Romance', 'color': 'cat-romance' },
+  { 'title': 'Drama', 'color': 'cat-drama' },
+  { 'title': 'Crime', 'color': 'cat-crime' },
+  { 'title': 'Documentary', 'color': 'cat-documentary' },
+  { 'title': 'Horror', 'color': 'cat-horror' }
 ];
 
 export const IMGSIZEPRIORITYMEDIACARD = [
