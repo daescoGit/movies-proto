@@ -11,17 +11,19 @@ const MediaEntryBody = ({ mediaEntry }) => {
   } = mediaEntry;
 
   return (
-    <Container className="mt-3 px-4">
-      <Row xs={1} md={2} className="gx-5">
-        <Col className="p-4 gray-backdrop">
+    <Row className="mt-3" xs={1} md={2}>
+      <Col className="mb-3">
+        <div className="p-4 m-0 gray-backdrop">
           <p className="entry-text">
             {plprogram$descriptionLocalized.da && plprogram$descriptionLocalized.da.length
               ? plprogram$descriptionLocalized.da
               : description
             }
           </p>
-        </Col>
-        <Col className="p-4 gray-backdrop">
+        </div>
+      </Col>
+      <Col className="mb-3">
+        <div className="p-4 m-0 gray-backdrop">
           <div style={{ display: 'flex', gap: '0.5rem' }}>
             <p className="goldtext-dark">Year:</p>
             {plprogram$year}
@@ -36,7 +38,7 @@ const MediaEntryBody = ({ mediaEntry }) => {
                   // Last one.
                   return genre.plprogram$title
                 } else {
-                  return genre.plprogram$title + ', '
+                  return genre.plprogram$title + ' · '
                 }
               })}
           </div>
@@ -50,7 +52,7 @@ const MediaEntryBody = ({ mediaEntry }) => {
                   // Last one.
                   return actor.plprogram$personName
                 } else {
-                  return actor.plprogram$personName + ', '
+                  return actor.plprogram$personName + ' · '
                 }
               })}
           </div>
@@ -64,13 +66,13 @@ const MediaEntryBody = ({ mediaEntry }) => {
                   // Last one.
                   return actor.plprogram$personName
                 } else {
-                  return actor.plprogram$personName + ', '
+                  return actor.plprogram$personName + ' · '
                 }
               })}
           </div>
-        </Col>
-      </Row>
-    </Container>
+        </div>
+      </Col>
+    </Row>
   )
 }
 

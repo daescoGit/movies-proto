@@ -89,17 +89,17 @@ body {
 
 .entry-container-bg {
   background-size: cover;
-  height: 94vh;
+  height: 95vh;
   background-repeat: no-repeat;
   position: fixed;
   background-position: center;
-  overflow-y: scroll;
+  overflow-y: auto;
 
-  animation: fadeIn 3s;
-  -webkit-animation: fadeIn 3s;
-  -moz-animation: fadeIn 3s;
-  -o-animation: fadeIn 3s;
-  -ms-animation: fadeIn 3s;
+  animation: fadeIn 2s;
+  -webkit-animation: fadeIn 2s;
+  -moz-animation: fadeIn 2s;
+  -o-animation: fadeIn 2s;
+  -ms-animation: fadeIn 2s;
 }
 
 @keyframes fadeIn {
@@ -134,6 +134,7 @@ body {
 
 .gray-backdrop {
   background-color: #212529;
+  height: 100%;
 }
 
 .goldtext-dark {

@@ -23,7 +23,7 @@ const CategoryList = ({ type }) => {
       // clean up
       clearTimeout();
     }
-  }, [])
+  }, [type])
 
   return (
     <Container className="mb-5 categoryList">
