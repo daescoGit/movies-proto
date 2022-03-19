@@ -33,7 +33,7 @@ const MediaCard = ({ mediaEntry, type, cat }) => {
   return (
     <Col>
       <Card text={'dark'} bg={'Info'} border="secondary">
-        <Card.Header as="h5" className={`card-header-cat`} style={{ color: '#383838' }}>
+        <Card.Header as="h5" className={`card-header`}>
           {mediaEntry.title}
         </Card.Header>
         <Card.Body className="card-body-cat">
