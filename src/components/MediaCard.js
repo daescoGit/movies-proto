@@ -22,7 +22,7 @@ const MediaCard = ({ mediaEntry, type, cat }) => {
   // samt state til reaktiv visning
   const handleWish = () => {
     if (inWishList === null) {
-      addToStorage(onlyID, `${type}:${cat.title}:`)
+      addToStorage(onlyID, `${type}:${cat}:`)
       setInWishList(onlyID)
     } else {
       removeFromStorage(onlyID)
@@ -39,7 +39,7 @@ const MediaCard = ({ mediaEntry, type, cat }) => {
         <Card.Body className="card-body-cat">
           <LinkContainer
             style={{ cursor: 'pointer' }}
-            to={`/${type}/${cat.title}/${onlyID}`}
+            to={`/${type}/${cat}/${onlyID}`}
           >
             <img
               className="d-block w-100"

@@ -2,6 +2,7 @@
 body {
   background-color: #000000 !important;
   color: #fff !important; 
+  overflow-x: hidden;
 }
 
 .card {
@@ -52,11 +53,8 @@ body {
   overflow: hidden;
 }
 
-.media-card-wish {
-  position: absolute;
-  top: 50px;
+.media-card-wish, .entry-wish {
   line-height: 0;
-  right: 15px;
   padding-top: -5px;
   padding: 15px 10px 18px;
   color: white;
@@ -68,13 +66,56 @@ body {
   user-select: none;
 }
 
-.media-card-wish:hover {
+.media-card-wish {
+  position: absolute;
+  top: 50px;
+  right: 15px;
+}
+
+.entry-wish {
+  width: fit-content;
+  height: fit-content;
+}
+
+.addwish-col {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 1rem;
+}
+
+p {
+  margin: 0 !important;
+}
+
+h1, h2, h3, h4, h5 {
+  margin: 0 !important;
+}
+
+.media-card-wish:hover, .entry-wish:hover {
   opacity: 1;
 }
 
 .entry-text {
   color: gainsboro;
-  margin: 0;
+}
+
+.entry-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.text-seperator-left {
+  background: rgb(57,64,72);
+  background: linear-gradient(90deg, rgba(57,64,72,1) 0%, rgba(57,64,72,0) 70%);
+  margin: 0.5rem 0;
+  height: 1px;
+}
+
+.text-seperator-hero {
+  background: rgb(142,123,21);
+  background: radial-gradient(circle, rgba(142,123,21,1) 0%, rgba(0,0,0,0) 90%);
+  height: 5px;
 }
 
 @media (min-width: 1400px) {
@@ -93,6 +134,12 @@ body {
 @media (max-width: 767px) {
   .entry-text {
     font-size: 0.8rem;
+  }
+  .hero-text .lead {
+    font-size: 0.8rem;
+  }
+  .hero-text h1 {
+    font-size: 1.8rem;
   }
 }
 
@@ -117,6 +164,42 @@ body {
   -ms-animation: fadeIn 2s;
 }
 
+.hero {
+  padding: 0;
+  margin: 0;
+}
+
+.hero-img {
+  height: 30vw;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: top;
+
+  animation: fadeIn 2s;
+  -webkit-animation: fadeIn 2s;
+  -moz-animation: fadeIn 2s;
+  -o-animation: fadeIn 2s;
+  -ms-animation: fadeIn 2s;
+}
+
+.hero-text {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: 10vw;
+}
+
+.headline-first {
+  margin-top: 4rem;
+
+  animation: fadeIn 8s;
+  -webkit-animation: fadeIn 8s;
+  -moz-animation: fadeIn 8s;
+  -o-animation: fadeIn 8s;
+  -ms-animation: fadeIn 8s;
+  
+}
 
 .entry-image {
   border: 5px solid #8e7b15;
@@ -229,11 +312,6 @@ body {
   background: rgb(255,255,255);
   background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(184,184,184,1) 100%);
   color: #737373 !important;
-}
-
-.hero {
-  padding: 0;
-  margin: 0;
 }
 
 /* .category-headline-Series {

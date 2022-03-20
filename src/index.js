@@ -20,7 +20,7 @@ ReactDOM.render(
     <Routes>
       <Route path="/" element={<App />} >
         <Route
-          // index er en root default til categories
+          // index er en root default til parent path'en 
           index
           element={
             <>
@@ -30,6 +30,7 @@ ReactDOM.render(
             </>
           }
         />
+
         <Route
           // : param path
           path="/:mediaType/:category" element={<CategoryIndex />}

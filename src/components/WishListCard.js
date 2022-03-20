@@ -50,12 +50,6 @@ const WishListCard = ({ fetchURL, type, cat, id, removeWish }) => {
             {'−'}
           </div>
         </Card.Body>
-
-        <Card.Body>
-          <small className="media-card-text text-muted">
-            {data.description}
-          </small>
-        </Card.Body>
       </Card>
     </Col>
   )

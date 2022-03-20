@@ -1,7 +1,12 @@
-import React from 'react'
-import { Row, Col, Container } from 'react-bootstrap';
+import React, { useState } from 'react'
+import { Row, Col } from 'react-bootstrap';
+import { addToStorage, getFromStorage, removeFromStorage } from '../utilities/miscFunc';
+import { useParams } from "react-router-dom";
 
 const MediaEntryBody = ({ mediaEntry }) => {
+  const params = useParams();
+  const [inWishList, setInWishList] = useState(getFromStorage(params.mediaId) || null);
+
   const {
     plprogram$descriptionLocalized,
     description,
@@ -9,6 +14,16 @@ const MediaEntryBody = ({ mediaEntry }) => {
     plprogram$tags,
     plprogram$credits
   } = mediaEntry;
+
+  const handleWish = () => {
+    if (inWishList === null) {
+      addToStorage(params.mediaId, `${params.mediaType}:${params.category}:`)
+      setInWishList(params.mediaId)
+    } else {
+      removeFromStorage(params.mediaId)
+      setInWishList(null)
+    }
+  }
 
   return (
     <Row className="mt-2" xs={1} md={2}>
@@ -24,12 +39,26 @@ const MediaEntryBody = ({ mediaEntry }) => {
       </Col>
       <Col className="mb-3 p-2">
         <div className="p-4 m-0 gray-backdrop">
-          <div style={{ display: 'flex', gap: '0.5rem' }}>
-            <p className="goldtext-dark">Year:</p>
-            {plprogram$year}
-          </div>
+          <Row>
+            <div className="entry-info col">
+              <p className="goldtext-dark">Year:</p>
+              {plprogram$year}
+            </div>
 
-          <div style={{ display: 'flex', gap: '0.5rem' }}>
+            <div className="col addwish-col">
+              <p className="goldtext-dark">{inWishList ? 'Remove from ' : 'Add to '}wishlist: </p>
+              <div className="entry-wish"
+                style={{ background: inWishList === null ? '#e2cf69' : '#ab3715' }}
+                onClick={handleWish}
+              >
+                {inWishList === null ? '+' : '−'}
+              </div>
+            </div>
+          </Row>
+
+          <div className="text-seperator-left" />
+
+          <div className="entry-info">
             <p className="goldtext-dark">Genres:</p>
             {plprogram$tags
               .filter((tag) => tag.plprogram$scheme === 'genre')
@@ -43,7 +72,9 @@ const MediaEntryBody = ({ mediaEntry }) => {
               })}
           </div>
 
-          <div style={{ display: 'flex', gap: '0.5rem' }}>
+          <div className="text-seperator-left" />
+
+          <div className="entry-info">
             <p className="goldtext-dark">Directors:</p>
             {plprogram$credits
               .filter((role) => role.plprogram$creditType === 'director')
@@ -57,7 +88,9 @@ const MediaEntryBody = ({ mediaEntry }) => {
               })}
           </div>
 
-          <div style={{ display: 'flex', gap: '0.5rem' }}>
+          <div className="text-seperator-left" />
+
+          <div className="entry-info">
             <p className="goldtext-dark">Actors:</p>
             {plprogram$credits
               .filter((role) => role.plprogram$creditType === 'actor')
