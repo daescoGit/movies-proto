@@ -74,6 +74,7 @@ body {
 
 .entry-text {
   color: gainsboro;
+  margin: 0;
 }
 
 @media (min-width: 1400px) {
@@ -227,7 +228,12 @@ body {
 .cat-documentary{
   background: rgb(255,255,255);
   background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(184,184,184,1) 100%);
-  color: #737373;
+  color: #737373 !important;
+}
+
+.hero {
+  padding: 0;
+  margin: 0;
 }
 
 /* .category-headline-Series {

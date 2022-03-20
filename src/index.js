@@ -7,6 +7,7 @@ import CategoryList from './routes/CategoryList';
 import WishList from './routes/WishList';
 import MediaEntry from './routes/MediaEntry';
 import CategoryIndex from './routes/CategoryIndex';
+import Hero from './components/Hero';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 // for at opsætte endpoint routing & singlepage funktionalitet har jeg implementeret "react-router" pakken
@@ -23,6 +24,7 @@ ReactDOM.render(
           index
           element={
             <>
+              <Hero />
               <CategoryList type="Movie" />
               <CategoryList type="Series" />
             </>

@@ -24,6 +24,7 @@ const MediaEntry = () => {
 
   let backdrop;
   if (data) {
+    console.log(data)
     // filterByFormat kigger på billeders "tags"
     const backdropRes = filterByFormat(IMGFORMATBACKDROP, data)
     if (backdropRes.length) backdrop = backdropRes[0].plprogram$url
